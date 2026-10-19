@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio cá nhân - Sinh viên CNTT năm hai tại Đại học Lạc Hồng, yêu thích lập trình và thiết kế web.">
+    <meta name="author" content="Nguyễn Ngọc Bảo Linh - LHUser">
+    <title>Portfolio Cá Nhân | Nguyễn Ngọc Bảo Linh - Đại học Lạc Hồng</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- 1. Thư viện Animate.css CDN (Theo yêu cầu kỹ thuật) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- 2. Thư viện AOS (Animate On Scroll) CSS CDN (Theo yêu cầu kỹ thuật) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <!-- File CSS tùy chỉnh -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 1. HEADER & NAV (Logo cá nhân & menu điều hướng: Giới thiệu, Kỹ năng, Dự án, Liên hệ) -->
+    <header class="site-header" id="header">
+        <nav class="nav-container" aria-label="Thanh điều hướng chính">
+            <a href="#hero" class="nav-logo" aria-label="Trang chủ">
+                Nguyễn Ngọc Bảo Linh
+            </a>
+
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Mở menu điều hướng"
+                aria-expanded="false" onclick="toggleNav()">
+                <i class="fa-solid fa-bars" id="navToggleIcon"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link">Giới thiệu</a></li>
+                <li><a href="#skills" class="nav-link">Kỹ năng</a></li>
+                <li><a href="#projects" class="nav-link">Dự án</a></li>
+                <li><a href="#contact" class="nav-link nav-btn-cta">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 2. MAIN (Khu vực nội dung chính) -->
+    <main class="site-main">
+
+        <!-- HERO SECTION: Lời chào ấn tượng, hiệu ứng chữ xuất hiện với Animate.css -->
+        <section class="hero-section animate__animated animate__fadeIn" id="hero">
+            <div class="hero-content">
+                <p class="hero-greeting animate__animated animate__fadeInDown">
+                    <span class="greeting-badge"><i class="fa-solid fa-circle-dot"></i> Sẵn sàng kết nối</span>
+                </p>
+                <h1 class="hero-title animate__animated animate__fadeInLeft">
+                    Xin chào, tôi là <br>
+                    <span class="text-highlight">Nguyễn Ngọc Bảo Linh</span>
+                </h1>
+                <p class="hero-desc animate__animated animate__fadeInLeft animate__delay-1s">
+                    Sinh viên CNTT năm hai tại Đại học Lạc Hồng, yêu thích lập trình và thiết kế web. Đam mê xây dựng
+                    trải nghiệm số sáng tạo, tối ưu và chuẩn mực.
+                </p>
+                <div class="hero-actions animate__animated animate__fadeInUp animate__delay-1s">
+                    <a href="#projects" class="btn btn-primary animate__animated animate__pulse animate__infinite">
+                        <span>Xem dự án</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Liên hệ ngay</span>
+                        <i class="fa-regular fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION: Giới thiệu bản thân ngắn gọn -->
+        <section class="section about-section" id="about" data-aos="fade-up">
+            <header class="section-heading">
+                <span class="section-tag"><i class="fa-regular fa-user"></i> Bản thân</span>
+                <h2 class="section-title">Giới thiệu</h2>
+            </header>
+
+            <article class="about-card" data-aos="fade-up" data-aos-delay="100">
+                <p class="about-intro">
+                    Tôi là <strong>Nguyễn Ngọc Bảo Linh</strong>, hiện đang là <strong>sinh viên CNTT năm hai tại Đại
+                        học Lạc Hồng (LHU)</strong>. Với niềm đam mê đặc biệt dành cho <strong>lập trình và thiết kế
+                        web</strong>, tôi luôn nỗ lực trau dồi tư duy giải thuật, viết mã nguồn sạch (Clean Code) và tạo
+                    ra giao diện chuẩn ngữ nghĩa HTML5, hiện đại và thân thiện với người dùng.
+                </p>
+                <ul class="about-info-list">
+                    <li><i class="fa-solid fa-graduation-cap"></i> <strong>Trường:</strong> <span>Đại học Lạc Hồng
+                            (LHU)</span></li>
+                    <li><i class="fa-solid fa-book-open"></i> <strong>Chuyên ngành:</strong> <span>Công nghệ Thông
+                            tin</span></li>
+                    <li><i class="fa-solid fa-location-dot"></i> <strong>Địa chỉ:</strong> <span>TP. Biên Hòa, Tỉnh Đồng
+                            Nai</span></li>
+                    <li><i class="fa-solid fa-heart"></i> <strong>Sở thích:</strong> <span>Lập trình Web, Python,
+                            Arduino IoT</span></li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- SKILLS SECTION: Các kỹ năng lập trình dạng card có hover/focus mượt mà -->
+        <section class="section skills-section" id="skills" data-aos="fade-up">
+            <header class="section-heading">
+                <span class="section-tag"><i class="fa-solid fa-code"></i> Chuyên môn</span>
+                <h2 class="section-title">Kỹ năng lập trình</h2>
+            </header>
+
+            <div class="skills-grid">
+                <!-- Card 1: HTML/CSS -->
+                <article class="skill-card" tabindex="0" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="skill-icon icon-html">
+                        <i class="fa-brands fa-html5"></i>
+                    </div>
+                    <h3 class="skill-name">HTML5 / CSS3</h3>
+                    <p class="skill-desc">Semantic HTML5, CSS Grid, Flexbox, CSS Variables, Responsive Design và hiệu
+                        ứng chuyển động mượt mà.</p>
+                </article>
+
+                <!-- Card 2: Python -->
+                <article class="skill-card" tabindex="0" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="skill-icon icon-python">
+                        <i class="fa-brands fa-python"></i>
+                    </div>
+                    <h3 class="skill-name">Python</h3>
+                    <p class="skill-desc">Cú pháp căn bản, lập trình hướng đối tượng (OOP), xử lý tệp dữ liệu JSON/CSV
+                        và viết ứng dụng dòng lệnh CLI.</p>
+                </article>
+
+                <!-- Card 3: SQL -->
+                <article class="skill-card" tabindex="0" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="skill-icon icon-sql">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <h3 class="skill-name">SQL & Cơ sở dữ liệu</h3>
+                    <p class="skill-desc">Thiết kế lược đồ quan hệ, truy vấn dữ liệu CRUD, kết nối cơ sở dữ liệu MySQL
+                        và SQLite.</p>
+                </article>
+
+                <!-- Card 4: JavaScript -->
+                <article class="skill-card" tabindex="0" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="skill-icon icon-js">
+                        <i class="fa-brands fa-js"></i>
+                    </div>
+                    <h3 class="skill-name">JavaScript (ES6+)</h3>
+                    <p class="skill-desc">Thao tác DOM, xử lý sự kiện tương tác, hàm bất đồng bộ Fetch API và xây dựng
+                        tính năng người dùng.</p>
+                </article>
+
+                <!-- Card 5: Arduino / IoT -->
+                <article class="skill-card" tabindex="0" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="skill-icon icon-arduino">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="skill-name">Arduino / IoT</h3>
+                    <p class="skill-desc">Lập trình vi điều khiển với C/C++, mô phỏng mạch điện tử Tinkercad, cảm biến
+                        và đèn tín hiệu thông minh.</p>
+                </article>
+
+                <!-- Card 6: Git & GitHub -->
+                <article class="skill-card" tabindex="0" data-aos="zoom-in" data-aos-delay="350">
+                    <div class="skill-icon icon-git">
+                        <i class="fa-brands fa-git-alt"></i>
+                    </div>
+                    <h3 class="skill-name">Git & GitHub</h3>
+                    <p class="skill-desc">Quản lý phiên bản mã nguồn, commit chuẩn mực, làm việc theo nhánh và lưu trữ
+                        đồ án học tập.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION: Các dự án tiêu biểu dùng CSS Grid -->
+        <section class="section projects-section" id="projects" data-aos="fade-up">
+            <header class="section-heading">
+                <span class="section-tag"><i class="fa-solid fa-laptop-code"></i> Thực hành</span>
+                <h2 class="section-title">Dự án tiêu biểu</h2>
+            </header>
+
+            <div class="projects-grid">
+                <!-- Project 1: To-Do List CLI -->
+                <article class="project-card" tabindex="0" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-header">
+                        <span class="project-badge">Python CLI</span>
+                        <i class="fa-solid fa-list-check project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">To-Do List CLI</h3>
+                        <p class="project-desc">
+                            Ứng dụng quản lý công việc trên giao diện dòng lệnh. Hỗ trợ thêm, sửa, xóa, tìm kiếm, đánh
+                            dấu hoàn thành và tự động lưu trạng thái vào file JSON.
+                        </p>
+                        <nav class="project-links" aria-label="Liên kết dự án To-Do List">
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-btn">
+                                <i class="fa-brands fa-github"></i> Mã nguồn
+                            </a>
+                            <a href="#projects" class="link-btn link-btn-demo">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Chi tiết
+                            </a>
+                        </nav>
+                    </div>
+                </article>
+
+                <!-- Project 2: Mạch đèn giao thông Arduino -->
+                <article class="project-card" tabindex="0" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-header">
+                        <span class="project-badge">Arduino / IoT</span>
+                        <i class="fa-solid fa-traffic-light project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Mạch đèn giao thông Arduino</h3>
+                        <p class="project-desc">
+                            Mô phỏng hệ thống cột đèn giao thông ngã tư thông minh với vi điều khiển Arduino Uno và C++.
+                            Tích hợp nút bấm ưu tiên và hiển thị thời gian đếm ngược.
+                        </p>
+                        <nav class="project-links" aria-label="Liên kết dự án Arduino">
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-btn">
+                                <i class="fa-brands fa-github"></i> Mã nguồn
+                            </a>
+                            <a href="#projects" class="link-btn link-btn-demo">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Sơ đồ mạch
+                            </a>
+                        </nav>
+                    </div>
+                </article>
+
+                <!-- Project 3: Website sinh nhật -->
+                <article class="project-card" tabindex="0" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-header">
+                        <span class="project-badge">HTML / CSS / JS</span>
+                        <i class="fa-solid fa-cake-candles project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Website sinh nhật</h3>
+                        <p class="project-desc">
+                            Trang web chúc mừng sinh nhật tương tác với hiệu ứng pháo hoa Canvas rực rỡ, phát nhạc nền
+                            tự động, hiệu ứng mở thiệp 3D và hộp quà bất ngờ.
+                        </p>
+                        <nav class="project-links" aria-label="Liên kết dự án Web sinh nhật">
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-btn">
+                                <i class="fa-brands fa-github"></i> Mã nguồn
+                            </a>
+                            <a href="#projects" class="link-btn link-btn-demo">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Xem thử
+                            </a>
+                        </nav>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION: Thông tin liên hệ, form và mạng xã hội -->
+        <section class="section contact-section" id="contact" data-aos="fade-up">
+            <header class="section-heading">
+                <span class="section-tag"><i class="fa-regular fa-paper-plane"></i> Kết nối</span>
+                <h2 class="section-title">Liên hệ</h2>
+            </header>
+
+            <div class="contact-wrapper">
+                <aside class="contact-info">
+                    <h3>Thông tin liên lạc</h3>
+                    <p>Hãy liên hệ với tôi khi có cơ hội học tập, bài tập nhóm hoặc trao đổi về công nghệ:</p>
+                    <address class="contact-address">
+                        <p><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> <a
+                                href="mailto:baolinh.lhuser@gmail.com">baolinh.lhuser@gmail.com</a></p>
+                        <p><i class="fa-solid fa-phone"></i> <strong>Điện thoại:</strong> <a href="tel:0912345678">(+84)
+                                091 234 5678</a></p>
+                        <p><i class="fa-solid fa-school"></i> <strong>Trường:</strong> Đại học Lạc Hồng, Biên Hòa, Đồng
+                            Nai</p>
+                    </address>
+
+                    <nav class="social-links" aria-label="Mạng xã hội">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
+                                class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="mailto:baolinh.lhuser@gmail.com" aria-label="Gửi Email"><i
+                                class="fa-solid fa-envelope"></i></a>
+                    </nav>
+                </aside>
+
+                <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Họ và tên</label>
+                        <input type="text" id="name" name="name" placeholder="Ví dụ: Nguyễn Văn A" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Địa chỉ Email</label>
+                        <input type="email" id="email" name="email" placeholder="email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Lời nhắn</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Nội dung lời nhắn..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit" id="btnSubmit">
+                        <span>Gửi tin nhắn</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 3. FOOTER (Chân trang chứa thông tin liên hệ, mạng xã hội và bản quyền) -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 Nguyễn Ngọc Bảo Linh - Sinh viên CNTT Đại học Lạc Hồng. Mọi quyền được bảo lưu.</p>
+            <p class="footer-sub">Thiết kế chuẩn ngữ nghĩa HTML5 Semantic, CSS Grid & Flexbox.</p>
+        </div>
+    </footer>
+
+    <!-- Thư viện AOS JS CDN -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Khởi tạo thư viện AOS (Animate On Scroll)
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 750,
+                    once: true,
+                    offset: 50,
+                    easing: 'ease-out-cubic'
+                });
+            }
+        });
+
+        // Bật / Tắt Menu trên Mobile
+        function toggleNav() {
+            const navMenu = document.getElementById('navMenu');
+            const navToggle = document.getElementById('navToggle');
+            const isOpen = navMenu.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        }
+
+        // Tự động đóng menu khi nhấp vào liên kết
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+                document.getElementById('navToggle').setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Xử lý gửi tin nhắn
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btnSubmit');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<span>Đang gửi...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                alert('Cảm ơn bạn đã gửi tin nhắn! Tôi sẽ phản hồi lại sớm nhất.');
+                document.getElementById('contactForm').reset();
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+            }, 800);
+        }
+    </script>
+</body>
+
+</html>

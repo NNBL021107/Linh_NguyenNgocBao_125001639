@@ -1,0 +1,933 @@
+/* ==========================================================================
+   PORTFOLIO WEBSITE STYLESHEET (PHONG CÁCH NỮ TÍNH & HIỆN ĐẠI)
+   Môn học: Thiết kế Web | Bài tập giữa kỳ
+   Sinh viên: Nguyễn Ngọc Bảo Linh | Khoa CNTT - Đại học Lạc Hồng (LHU)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS VARIABLES (DESIGN TOKENS TRONG :root - TONE NỮ TÍNH & TINH TẾ)
+   -------------------------------------------------------------------------- */
+:root {
+    /* Biến cốt lõi theo yêu cầu đề bài - Tone Hồng Phấn & Rose Gold nữ tính */
+    --primary-color: #d85d7b;
+    /* Hồng Peony dịu dàng, ngọt ngào */
+    --secondary-color: #f497aa;
+    /* Hồng Pastel / Sakura nhẹ nhàng */
+    --bg-color: #fdf8f9;
+    /* Nền trắng ánh hồng phấn thanh lịch */
+    --text-color: #3d292e;
+    /* Màu chữ than ấm tương phản cao, êm dịu */
+    --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --spacing-unit: 1rem;
+    /* Đơn vị khoảng cách chuẩn (16px) */
+
+    /* Biến mở rộng hỗ trợ UI/UX nữ tính cao cấp */
+    --primary-hover: #c44766;
+    --primary-glow: rgba(216, 93, 123, 0.28);
+    --secondary-glow: rgba(244, 151, 170, 0.35);
+
+    --bg-surface: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.88);
+    --bg-card-hover: #ffffff;
+
+    --text-muted: #785a63;
+    --text-dim: #a1838c;
+
+    --border-color: rgba(216, 93, 123, 0.16);
+    --border-color-hover: rgba(216, 93, 123, 0.45);
+
+    --font-mono: 'Fira Code', monospace;
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-full: 9999px;
+
+    --shadow-sm: 0 4px 15px rgba(216, 93, 123, 0.08);
+    --shadow-md: 0 12px 30px -5px rgba(216, 93, 123, 0.14);
+    --shadow-glow: 0 0 25px var(--primary-glow);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   2. CSS RESET & GLOBAL STYLES
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    /* Hiệu ứng nền mờ gradient pastel lãng mạn */
+    background-image:
+        radial-gradient(circle at 10% 15%, rgba(244, 151, 170, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(251, 207, 232, 0.25) 0%, transparent 45%);
+    background-attachment: fixed;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+ul {
+    list-style: none;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    border: none;
+    outline: none;
+}
+
+/* Tùy chỉnh thanh cuộn trình duyệt tone hồng */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fdf2f4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f4aab9;
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* --------------------------------------------------------------------------
+   3. BUTTONS & UTILITIES (TỰ VIẾT :hover, :focus, :focus-visible)
+   -------------------------------------------------------------------------- */
+.text-highlight {
+    background: linear-gradient(135deg, #c44766 0%, var(--primary-color) 45%, #f472b6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    font-weight: 800;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing-unit) * 0.5);
+    padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.5);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #ffffff;
+    box-shadow: 0 6px 18px var(--primary-glow);
+}
+
+/* Hiệu ứng :hover và :focus cho nút bấm */
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(216, 93, 123, 0.45);
+    filter: brightness(1.03);
+}
+
+.btn-primary:focus,
+.btn-primary:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #ffffff;
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+    background: #fff5f7;
+    border-color: var(--primary-color);
+    color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(216, 93, 123, 0.15);
+}
+
+.btn-secondary:focus,
+.btn-secondary:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   4. HEADER & NAV (CSS FLEXBOX)
+   -------------------------------------------------------------------------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(253, 248, 249, 0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(216, 93, 123, 0.05);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: calc(var(--spacing-unit) * 0.9) calc(var(--spacing-unit) * 1.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 1.35rem;
+    font-weight: 800;
+    font-family: var(--font-main);
+    color: var(--text-color);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.nav-logo:hover {
+    color: var(--primary-color);
+}
+
+.logo-accent {
+    color: var(--primary-color);
+}
+
+.logo-dot {
+    color: var(--secondary-color);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 1.25);
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding: calc(var(--spacing-unit) * 0.4) calc(var(--spacing-unit) * 0.7);
+    border-radius: var(--radius-sm);
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:focus-visible {
+    color: var(--primary-color);
+    background: rgba(216, 93, 123, 0.08);
+    outline: 2px solid var(--primary-color);
+    outline-offset: 1px;
+}
+
+.nav-btn-cta {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #ffffff;
+    border-radius: var(--radius-full);
+    padding: calc(var(--spacing-unit) * 0.45) calc(var(--spacing-unit) * 1.1);
+    box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.nav-btn-cta:hover {
+    color: #ffffff;
+    filter: brightness(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(216, 93, 123, 0.35);
+}
+
+.nav-toggle {
+    display: none;
+    background: transparent;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0.4rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. MAIN LAYOUT & SECTIONS
+   -------------------------------------------------------------------------- */
+.site-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 calc(var(--spacing-unit) * 1.5);
+}
+
+.section {
+    padding: calc(var(--spacing-unit) * 4.5) 0;
+    scroll-margin-top: 80px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #ffeef2;
+    color: var(--primary-color);
+    border: 1px solid rgba(216, 93, 123, 0.25);
+    padding: 0.3rem 0.85rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-color);
+}
+
+/* --------------------------------------------------------------------------
+   6. HERO SECTION (FLEXBOX)
+   -------------------------------------------------------------------------- */
+.hero-section {
+    min-height: calc(85vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 4) 0;
+}
+
+.hero-content {
+    max-width: 780px;
+}
+
+.hero-greeting {
+    margin-bottom: calc(var(--spacing-unit) * 1.2);
+}
+
+.greeting-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #ffeef2;
+    border: 1px solid rgba(216, 93, 123, 0.3);
+    color: var(--primary-color);
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.88rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(216, 93, 123, 0.08);
+}
+
+.greeting-badge i {
+    animation: pulseHeart 1.5s infinite;
+}
+
+@keyframes pulseHeart {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+.hero-title {
+    font-size: 3.25rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: calc(var(--spacing-unit) * 1.2);
+    color: var(--text-color);
+}
+
+.hero-desc {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: calc(var(--spacing-unit) * 1);
+    flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   7. ABOUT SECTION (CARD & LIST)
+   -------------------------------------------------------------------------- */
+.about-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: calc(var(--spacing-unit) * 2.5);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.about-card:hover,
+.about-card:focus,
+.about-card:focus-within {
+    border-color: var(--border-color-hover);
+    box-shadow: 0 16px 36px rgba(216, 93, 123, 0.18);
+    outline: none;
+}
+
+.about-intro {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.about-intro strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.about-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 0.75);
+    padding-top: calc(var(--spacing-unit) * 1.25);
+    border-top: 1px dashed rgba(216, 93, 123, 0.2);
+}
+
+.about-info-list li {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-smooth);
+}
+
+.about-info-list li:hover {
+    background: rgba(216, 93, 123, 0.04);
+}
+
+.about-info-list li i {
+    color: var(--primary-color);
+    width: 24px;
+    font-size: 1.1rem;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.about-info-list strong {
+    min-width: 140px;
+    color: var(--text-color);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   8. SKILLS SECTION (CSS GRID & CARDS VỚI :hover, :focus)
+   -------------------------------------------------------------------------- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: calc(var(--spacing-unit) * 1.5);
+}
+
+.skill-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: calc(var(--spacing-unit) * 1.8);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    cursor: default;
+}
+
+/* Hiệu ứng :hover và :focus tự viết cho Skill Card */
+.skill-card:hover,
+.skill-card:focus,
+.skill-card:focus-visible {
+    transform: translateY(-6px);
+    background: #ffffff;
+    border-color: var(--primary-color);
+    box-shadow: 0 14px 30px rgba(216, 93, 123, 0.2);
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.skill-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.85rem;
+    margin-bottom: calc(var(--spacing-unit) * 1);
+    transition: var(--transition-smooth);
+}
+
+.skill-card:hover .skill-icon,
+.skill-card:focus .skill-icon {
+    transform: scale(1.12) rotate(4deg);
+}
+
+/* Bảng màu pastel nữ tính dịu mắt cho các kỹ năng */
+.icon-html {
+    background: #ffe4e9;
+    color: #e84a6b;
+}
+
+.icon-python {
+    background: #f0ecfc;
+    color: #8c7ae6;
+}
+
+.icon-sql {
+    background: #e8f8f3;
+    color: #2ecc71;
+}
+
+.icon-js {
+    background: #fff5e6;
+    color: #f39c12;
+}
+
+.icon-arduino {
+    background: #e6f9fa;
+    color: #1abc9c;
+}
+
+.icon-git {
+    background: #fdf0eb;
+    color: #e67e22;
+}
+
+.skill-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.4rem;
+}
+
+.skill-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+/* --------------------------------------------------------------------------
+   9. PROJECTS SECTION (CSS GRID TIÊU BIỂU VỚI :hover, :focus)
+   -------------------------------------------------------------------------- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: calc(var(--spacing-unit) * 1.8);
+}
+
+.project-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+}
+
+/* Hiệu ứng :hover và :focus tự viết cho Project Card */
+.project-card:hover,
+.project-card:focus,
+.project-card:focus-visible {
+    transform: translateY(-6px);
+    border-color: var(--primary-color);
+    box-shadow: 0 16px 32px rgba(216, 93, 123, 0.22);
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.project-header {
+    height: 140px;
+    /* Gradient pastel hoa đào & hoàng hôn nữ tính */
+    background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.project-card:nth-child(1) .project-header {
+    background: linear-gradient(135deg, #ffd1dc 0%, #f78ca0 100%);
+}
+
+.project-card:nth-child(2) .project-header {
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+
+.project-card:nth-child(3) .project-header {
+    background: linear-gradient(135deg, #fbc2eb 0%, #fed6e3 100%);
+}
+
+.project-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(216, 93, 123, 0.2);
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.7rem;
+    border-radius: var(--radius-full);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.project-icon {
+    font-size: 3.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    transition: var(--transition-smooth);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+.project-card:hover .project-icon,
+.project-card:focus .project-icon {
+    transform: scale(1.15) rotate(-4deg);
+}
+
+.project-content {
+    padding: calc(var(--spacing-unit) * 1.5);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+.project-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: calc(var(--spacing-unit) * 1.2);
+    flex-grow: 1;
+}
+
+.project-links {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 0.75);
+    padding-top: calc(var(--spacing-unit) * 0.75);
+    border-top: 1px dashed rgba(216, 93, 123, 0.2);
+}
+
+.link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-sm);
+    background: #fdf2f4;
+    border: 1px solid rgba(216, 93, 123, 0.12);
+}
+
+.link-btn:hover,
+.link-btn:focus,
+.link-btn:focus-visible {
+    color: var(--primary-color);
+    background: #ffe4e9;
+    outline: 2px solid var(--primary-color);
+}
+
+.link-btn-demo {
+    color: #ffffff;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.link-btn-demo:hover,
+.link-btn-demo:focus {
+    color: #ffffff;
+    background: var(--primary-hover);
+    box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+/* --------------------------------------------------------------------------
+   10. CONTACT SECTION (GRID 2 CỘT)
+   -------------------------------------------------------------------------- */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: calc(var(--spacing-unit) * 2.5);
+    align-items: start;
+}
+
+.contact-info {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: calc(var(--spacing-unit) * 2);
+    box-shadow: var(--shadow-sm);
+}
+
+.contact-info h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+.contact-info p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: calc(var(--spacing-unit) * 1.2);
+}
+
+.contact-address p {
+    margin-bottom: calc(var(--spacing-unit) * 0.7);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-style: normal;
+    font-size: 0.95rem;
+}
+
+.contact-address i {
+    color: var(--primary-color);
+    width: 20px;
+    font-size: 1.1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 0.75);
+    margin-top: calc(var(--spacing-unit) * 1.5);
+}
+
+.social-links a {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff0f3;
+    border: 1px solid rgba(216, 93, 123, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.15rem;
+    transition: var(--transition-smooth);
+}
+
+.social-links a:hover,
+.social-links a:focus,
+.social-links a:focus-visible {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px var(--primary-glow);
+    outline: 2px solid var(--primary-color);
+}
+
+/* Form liên hệ */
+.contact-form {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: calc(var(--spacing-unit) * 2.2);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 1.2);
+    box-shadow: var(--shadow-sm);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+    background: #fdf8f9;
+    border: 1px solid rgba(216, 93, 123, 0.2);
+    border-radius: var(--radius-md);
+    padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1);
+    color: var(--text-color);
+    transition: var(--transition-smooth);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(216, 93, 123, 0.2);
+    background: #ffffff;
+}
+
+.btn-submit {
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   11. FOOTER (FLEXBOX)
+   -------------------------------------------------------------------------- */
+.site-footer {
+    background: #3a262c;
+    color: #f7e7ea;
+    border-top: 1px solid rgba(216, 93, 123, 0.25);
+    padding: calc(var(--spacing-unit) * 2.8) 0;
+    margin-top: calc(var(--spacing-unit) * 3);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 calc(var(--spacing-unit) * 1.5);
+    text-align: center;
+    font-size: 0.92rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.footer-sub {
+    font-size: 0.82rem;
+    color: #d1b5bc;
+}
+
+/* --------------------------------------------------------------------------
+   12. RESPONSIVE DESIGN (MEDIA QUERIES)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(253, 248, 249, 0.98);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: stretch;
+        padding: calc(var(--spacing-unit) * 1.5);
+        gap: calc(var(--spacing-unit) * 0.75);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 10px 25px rgba(216, 93, 123, 0.1);
+        display: none;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: calc(var(--spacing-unit) * 0.6) calc(var(--spacing-unit) * 1);
+    }
+
+    .hero-title {
+        font-size: 2.35rem;
+    }
+
+    .hero-desc {
+        font-size: 1rem;
+    }
+
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-logo {
+        font-size: 1.1rem;
+    }
+
+    .about-card {
+        padding: calc(var(--spacing-unit) * 1.4);
+    }
+
+    .about-info-list strong {
+        min-width: 120px;
+    }
+
+    .hero-title {
+        font-size: 1.95rem;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
