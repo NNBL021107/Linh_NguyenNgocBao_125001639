@@ -1,4 +1,3 @@
-# Linh_NguyenNgocBao_125001639
 # NHẬT KÝ PROMPT ENGINEERING (VIBE CODING LOG)
 
 - **Họ và tên:** Nguyễn Ngọc Bảo Linh
@@ -51,7 +50,7 @@
 - **Prompt đã dùng:** *"Theo sát đề bài gốc, không thêm không bớt các mục ngoài lề (chỉ giữ đúng 4 mục điều hướng: Giới thiệu, Kỹ năng, Dự án, Liên hệ). Cập nhật tên tác giả thành Nguyễn Ngọc Bảo Linh, sinh viên năm 2 khoa CNTT Đại học Lạc Hồng (LHU)."*
 - **Kết quả AI tạo ra:**
   - Loại bỏ các phần thừa không có trong đề bài, tinh gọn đúng cấu trúc chuẩn.
-  - Cập nhật toàn bộ thông tin cá nhân của sinh viên Nguyễn Ngọc Bảo Linh ở Header, Logo `<BL.Dev/>`, Hero, About, Email (`baolinh.lhu@gmail.com`) và Footer bản quyền.
+  - Cập nhật toàn bộ thông tin cá nhân của sinh viên Nguyễn Ngọc Bảo Linh ở Header, Logo thương hiệu `Nguyễn Ngọc Bảo Linh`, Hero, About, Email (`baolinh.lhu@gmail.com`) và Footer bản quyền.
 - **Nhận xét & Tinh chỉnh của SV:** Bố cục cô đọng, đúng trọng tâm đề thi môn Thiết kế Web, thông tin cá nhân đồng bộ 100% giữa file HTML và CSS.
 
 ---
@@ -67,6 +66,16 @@
   - Thẻ card chuyển sang màu trắng tinh khôi với viền hồng phấn và bóng đổ mềm (`box-shadow: 0 12px 30px rgba(216, 93, 123, 0.14)`).
   - Các icon kỹ năng và banner dự án mang dải màu Gradient hoàng hôn pastel lãng mạn.
 - **Nhận xét & Tinh chỉnh của SV:** Giao diện lột xác hoàn toàn, mang nét nữ tính đặc trưng của sinh viên nữ ngành IT, tính thẩm mỹ cao và tạo ấn tượng thị giác rất tốt.
+
+---
+
+### Lần 5: Tinh chỉnh bố cục thông tin cá nhân & Chuẩn hóa Logo
+- **Prompt đã dùng:** *"xếp thẳng đi, vậy nhìn lộn xộn lắm"*
+- **Kết quả AI tạo ra:**
+  - Chuyển đổi danh sách thông tin cá nhân (`.about-info-list`) từ dạng CSS Grid tự co giãn (bị rớt dòng ngắt chữ) sang Flexbox cột dọc (`flex-direction: column`).
+  - Cố định độ rộng tối thiểu cho nhãn tiêu đề (`min-width: 140px; white-space: nowrap;`), giúp Icon, Tiêu đề (Trường, Chuyên ngành, Địa chỉ, Sở thích) và Nội dung được căn thẳng tắp một hàng dọc.
+  - Tối ưu phản hồi trên di động (`@media max-width: 480px`), giữ giao diện luôn gọn gàng và không bị tràn khung.
+- **Nhận xét & Tinh chỉnh của SV:** Phần thông tin bản thân trở nên ngay ngắn, chuyên nghiệp, xóa bỏ tình trạng chữ bị rớt dòng lộn xộn.
 
 ---
 
